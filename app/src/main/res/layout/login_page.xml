@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -27,12 +28,13 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/enter_username"
-        android:inputType="number|numberDecimal|numberSigned"
+        android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Sign_In_TextView" />
+        app:layout_constraintTop_toBottomOf="@+id/Sign_In_TextView"
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/Enter_Password_editTextNumberSigned"
@@ -43,12 +45,13 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/enter_password"
-        android:inputType="number|numberDecimal|numberSigned"
+        android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Enter_Username_editTextNumberSigned" />
+        app:layout_constraintTop_toBottomOf="@id/Enter_Username_editTextNumberSigned"
+        tools:ignore="TextFields" />
 
     <Button
         android:id="@+id/Login_Button"
