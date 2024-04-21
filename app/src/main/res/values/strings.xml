@@ -4,4 +4,6 @@
     <string name="enter_username">Enter Username</string>
     <string name="enter_password">Enter Password</string>
     <string name="login">Login</string>
+    <string name="project_organizer">Project Organizer</string>
+    <string name="create_account">Create Account</string>
 </resources>
