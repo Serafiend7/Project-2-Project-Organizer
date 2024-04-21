@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Project2</string>
+    <string name="please_sign_in">Please Sign In</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
+    <string name="project_organizer">Project Organizer</string>
+    <string name="welcome">Welcome!</string>
+    <string name="create_project">Create Project</string>
+    <string name="open_project">Open Project</string>
+    <string name="shared_projects">Shared Projects</string>
+    <string name="list_users">List Users</string>
+    <string name="admin_feature">Admin Feature</string>
 </resources>
