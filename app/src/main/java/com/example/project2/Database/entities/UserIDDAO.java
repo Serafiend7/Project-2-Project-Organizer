@@ -12,9 +12,7 @@ import java.util.List;
 public interface UserIDDAO {
 //TODO: FIX THIS
     @Query("SELECT * from " + UserIDDatabase.USER_ID_TABLE + " WHERE username == :username")
-    static UserID getUserByUsername(String username) {
-        return null;
-    }
+    UserID getUserByUsername(String username);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(UserID... userID);

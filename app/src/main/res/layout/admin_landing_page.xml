@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LandingPage">
+    tools:context=".AdminLandingPage">
 
     <TextView
         android:id="@+id/Landing_Page_TextView"
@@ -21,40 +21,26 @@
         app:layout_constraintVertical_bias="0.061"/>
 
     <Button
-        android:id="@+id/Create_Project_Button"
+        android:id="@+id/List_Users_Button"
         android:layout_width="277dp"
         android:layout_height="88dp"
         android:layout_marginTop="100dp"
-        android:text="@string/create_project"
+        android:text="@string/list_users"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Landing_Page_TextView"
         />
-
     <Button
-        android:id="@+id/Open_Project_Button"
+        android:id="@+id/Admin_Feature_Button"
         android:layout_width="277dp"
         android:layout_height="88dp"
         android:layout_marginTop="20dp"
-        android:text="@string/open_project"
+        android:text="@string/admin_feature"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Create_Project_Button"
+        app:layout_constraintTop_toBottomOf="@id/List_Users_Button"
         />
-
-    <Button
-        android:id="@+id/Shared_Projects_Button"
-        android:layout_width="277dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/shared_projects"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Open_Project_Button"
-        />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

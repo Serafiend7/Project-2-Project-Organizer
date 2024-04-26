@@ -33,11 +33,10 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    //TODO: call LandingPage
-                    // startActivity(new Intent(LoginActivity.this, LandingPage.class));
-                    // if its an admin call AdminLandingPage
-                    // startActivity(new Intent(LoginActivity.this, AdminLandingPage.class));
-                    // These hopefully should work
+                    startActivity(new Intent(LoginActivity.this, LandingPage.class));
+                    if (checkAdminStatus(binding.EnterUsernameEditTextNumberSigned.getText().toString())){
+                        startActivity(new Intent(LoginActivity.this, AdminLandingPage.class));
+                    }
                 }
             }
         });
@@ -54,5 +53,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private boolean checkAdminStatus(String username){
+        UserID userId = repository.getUserByUserName(username);
+        assert userId != null;
+        return userId.isAdmin();
     }
 }

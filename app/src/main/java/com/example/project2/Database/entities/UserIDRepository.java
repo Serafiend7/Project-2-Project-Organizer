@@ -43,11 +43,11 @@ public class UserIDRepository {
                 new Callable<UserID>() {
                     @Override
                     public UserID call() throws Exception {
-                        return UserIDDAO.getUserByUsername(username);
+                        return userIDDAO.getUserByUsername(username);
                     }
                 });
         try {
-            future.get();
+            return future.get();
         } catch (InterruptedException | ExecutionException e) {
             Log.i(MainActivity.TAG, "Problem when getting user by username");
         }
