@@ -1,5 +1,6 @@
 package com.example.project2;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,5 +25,3 @@ public class AdminLandingPage extends AppCompatActivity {
                 startActivity(new Intent(AdminLandingPage.this, MainActivity.class));
             }
         });
-    }
-}

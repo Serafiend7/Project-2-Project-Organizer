@@ -1,5 +1,6 @@
 package com.example.project2;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,4 +26,4 @@ public class LandingPage extends AppCompatActivity {
             }
         });
     }
-}
+    }
