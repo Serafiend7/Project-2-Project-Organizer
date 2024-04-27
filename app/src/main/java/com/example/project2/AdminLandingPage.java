@@ -6,22 +6,22 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.project2.databinding.ActivityMainBinding;
+import com.example.project2.databinding.AdminLandingPageBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class AdminLandingPage extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    AdminLandingPageBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = AdminLandingPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.LoginButton.setOnClickListener(new View.OnClickListener() {
+        binding.LogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                startActivity(new Intent(AdminLandingPage.this, MainActivity.class));
             }
         });
     }
