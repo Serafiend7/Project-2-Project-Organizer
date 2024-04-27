@@ -12,4 +12,6 @@
     <string name="shared_projects">Shared Projects</string>
     <string name="list_users">List Users</string>
     <string name="admin_feature">Admin Feature</string>
+    <string name="logout">Logout</string>
+
 </resources>

@@ -1,11 +1,13 @@
 package com.example.project2;
 
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
 import com.example.project2.databinding.LandingPageBinding;
-import com.example.project2.databinding.LoginPageBinding;
 
 public class LandingPage extends AppCompatActivity {
 
@@ -16,6 +18,12 @@ public class LandingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = LandingPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-    }
 
-}
+        binding.LogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LandingPage.this, MainActivity.class));
+            }
+        });
+    }
+    }
