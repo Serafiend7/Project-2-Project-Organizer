@@ -25,3 +25,5 @@ public class AdminLandingPage extends AppCompatActivity {
                 startActivity(new Intent(AdminLandingPage.this, MainActivity.class));
             }
         });
+    }
+}
