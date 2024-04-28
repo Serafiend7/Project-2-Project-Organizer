@@ -10,7 +10,6 @@ import java.util.List;
 
 @Dao
 public interface UserIDDAO {
-//TODO: FIX THIS
     @Query("SELECT * from " + UserIDDatabase.USER_ID_TABLE + " WHERE username == :username")
     UserID getUserByUsername(String username);
 
