@@ -38,6 +38,21 @@ public class UserIDRepository {
         return null;
     }
 
+    public UserID getUserByUserID(Integer id) {
+        Future<UserID> future = UserIDDatabase.databaseWriteExecutor.submit(
+                new Callable<UserID>() {
+                    @Override
+                    public UserID call() throws Exception {
+                        return userIDDAO.getUserByUserID(id);
+                    }
+                });
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.i(MainActivity.TAG, "Problem when getting user by userID");
+        }
+        return null;
+    }
     public UserID getUserByUserName(String username) {
         Future<UserID> future = UserIDDatabase.databaseWriteExecutor.submit(
                 new Callable<UserID>() {
@@ -73,6 +88,12 @@ public class UserIDRepository {
     public void insertUserID(UserID... userID){
         UserIDDatabase.databaseWriteExecutor.execute(() -> {
             userIDDAO.insert(userID);
+        });
+    }
+
+    public void delete(UserID userId){
+        UserIDDatabase.databaseWriteExecutor.execute(() -> {
+            userIDDAO.delete(userId);
         });
     }
 

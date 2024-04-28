@@ -27,4 +27,7 @@ public interface UserIDDAO {
 
     @Query("DELETE from " + UserIDDatabase.USER_ID_TABLE)
     void deleteAll();
+
+    @Query("SELECT * from " + UserIDDatabase.USER_ID_TABLE + " WHERE id == :id")
+    UserID getUserByUserID(Integer id);
 }
