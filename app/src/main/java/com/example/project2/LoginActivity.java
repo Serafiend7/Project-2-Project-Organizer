@@ -46,8 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
         UserID userId = repository.getUserByUserName(username);
 
-        if (username != null){
-            assert userId != null;
+        if (username != null && userId != null){
             if(password.equals(userId.getPassword())){
                 return true;
             }

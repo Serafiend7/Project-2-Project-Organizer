@@ -44,7 +44,7 @@ public abstract class UserIDDatabase extends RoomDatabase {
 
     private static final RoomDatabase.Callback addDefaultValues = new RoomDatabase.Callback(){
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db){
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             Log.i(MainActivity.TAG, "Database Created!");
             databaseWriteExecutor.execute(() -> {
@@ -56,20 +56,6 @@ public abstract class UserIDDatabase extends RoomDatabase {
                 UserID testUser1 = new UserID("testUser1", "testUser1", false);
                 dao.insert(testUser1);
 
-                UserID admin2 = new UserID("admin2", "admin2", false);
-                dao.insert(admin2);
-
-                UserID admin3 = new UserID("admin3", "admin3", true);
-                dao.insert(admin3);
-
-                UserID admin4 = new UserID("admin4", "admin4", true);
-                dao.insert(admin4);
-
-                UserID admin5 = new UserID("admin5", "admin5", true);
-                dao.insert(admin5);
-
-                UserID admin6 = new UserID("admin6", "admin6", true);
-                dao.insert(admin6);
             });
         }
     };
