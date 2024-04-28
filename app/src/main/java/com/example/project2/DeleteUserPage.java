@@ -42,6 +42,7 @@ public class DeleteUserPage extends AppCompatActivity {
                 }
                 else {
                     deleteUser(Integer.parseInt(binding.EnterUserIDEditTextNumberSigned.getText().toString()));
+                    Toast.makeText(DeleteUserPage.this, "User successfully deleted", Toast.LENGTH_SHORT).show();
                 }
             }
         });
