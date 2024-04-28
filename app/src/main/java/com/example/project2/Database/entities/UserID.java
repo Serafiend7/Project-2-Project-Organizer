@@ -1,5 +1,6 @@
 package com.example.project2.Database.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -63,5 +64,11 @@ public class UserID {
     @Override
     public int hashCode() {
         return Objects.hash(id, username, password, isAdmin);
+    }
+
+    @Override
+    @NonNull
+    public String toString() {
+        return "User ID: " + this.id + "\nUsername: " + this.username + "\nPassword: " + this.password + "\nAdmin Status: " + this.isAdmin;
     }
 }
