@@ -19,9 +19,6 @@ public interface UserIDDAO {
     @Delete
     void delete(UserID userID);
 
-    @Insert
-    void insert(UserID userID);
-
     @Query("Select * from " + UserIDDatabase.USER_ID_TABLE + " ORDER BY username")
     List<UserID> getAllRecords();
 

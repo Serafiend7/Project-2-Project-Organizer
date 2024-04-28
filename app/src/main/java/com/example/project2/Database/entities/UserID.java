@@ -58,7 +58,7 @@ public class UserID {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserID userID = (UserID) o;
-        return id == userID.id && isAdmin == userID.isAdmin && Objects.equals(username, userID.username) && Objects.equals(password, userID.password);
+        return Objects.equals(username, userID.username);
     }
 
     @Override
