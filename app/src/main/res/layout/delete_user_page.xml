@@ -3,65 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LandingPage">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/Landing_Page_TextView"
+        android:id="@+id/Delete_User_TextView"
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:layout_marginTop="28dp"
-        android:text="@string/welcome"
+        android:text="@string/delete_a_user"
         android:textSize="32sp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061"/>
+        app:layout_constraintVertical_bias="0.061" />
+
+
+    <EditText
+        android:id="@+id/Enter_UserID_editTextNumberSigned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/enter_user_id"
+        android:inputType="number"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Delete_User_TextView"
+        tools:ignore="TextFields" />
 
     <Button
-        android:id="@+id/Create_Project_Button"
+        android:id="@+id/Delete_User_Button"
         android:layout_width="277dp"
         android:layout_height="88dp"
-        android:layout_marginTop="100dp"
-        android:text="@string/create_project"
+        android:layout_marginTop="68dp"
+        android:text="@string/delete_user"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Landing_Page_TextView"
-        />
+        app:layout_constraintTop_toBottomOf="@id/Enter_UserID_editTextNumberSigned" />
 
     <Button
-        android:id="@+id/Open_Project_Button"
-        android:layout_width="277dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/open_project"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Create_Project_Button"
-        />
-
-    <Button
-        android:id="@+id/Shared_Projects_Button"
-        android:layout_width="277dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/shared_projects"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Open_Project_Button"
-        />
-
-
-    <Button
-        android:id="@+id/Logout_Button"
+        android:id="@+id/Previous_Page_Button"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:text="@string/logout"
+        android:text="@string/previous_page"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

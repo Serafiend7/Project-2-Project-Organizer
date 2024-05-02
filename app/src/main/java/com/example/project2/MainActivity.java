@@ -10,6 +10,7 @@ import com.example.project2.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG = "DAC_USERID";
     ActivityMainBinding binding;
 
     @Override

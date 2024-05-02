@@ -1,9 +1,29 @@
 <resources>
     <string name="app_name">Project2</string>
-    <string name="please_sign_in">Please Sign in</string>
+    <string name="please_sign_in">Please Sign In</string>
     <string name="enter_username">Enter Username</string>
     <string name="enter_password">Enter Password</string>
     <string name="login">Login</string>
-    <string name="project_organizer">Project Organizer</string>
     <string name="create_account">Create Account</string>
+    <string name="project_organizer">Project Organizer</string>
+    <string name="welcome">Welcome!</string>
+    <string name="create_project">Create Project</string>
+    <string name="open_project">Open Project</string>
+    <string name="shared_projects">Shared Projects</string>
+    <string name="list_users">List Users</string>
+    <string name="admin_feature">Admin Feature</string>
+    <string name="logout">Logout</string>
+    <string name="list_of_users">List of Users</string>
+    <string name="previous_page">Previous Page</string>
+    <string name="add_user">Add User</string>
+    <string name="delete_user">Delete User</string>
+    <string name="delete_a_user">Delete A User</string>
+    <string name="add_a_user">Add A User</string>
+    <string name="enter_a_username">Enter a username</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="create_user">Create User</string>
+    <string name="admin_status_true_false">Admin Status(True/False)</string>
+    <string name="enter_user_id">Enter User ID</string>
+
 </resources>
