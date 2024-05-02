@@ -25,5 +25,9 @@
     <string name="create_user">Create User</string>
     <string name="admin_status_true_false">Admin Status(True/False)</string>
     <string name="enter_user_id">Enter User ID</string>
+    <string name="create_your_account">Create Your Account</string>
+    <string name="enter_your_username">Enter Your Username</string>
+    <string name="enter_your_password">Enter Your Password</string>
+    <string name="confirm_your_password">Confirm Your Password</string>
 
 </resources>
