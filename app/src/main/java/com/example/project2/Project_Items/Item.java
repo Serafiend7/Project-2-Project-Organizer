@@ -2,16 +2,16 @@ package com.example.project2.Project_Items;
 
 import com.example.project2.database.entities.UserID;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class Item {
 
     private String name;
-    private List<UserID> users;
+    private ArrayList<UserID> users;
 
 
-    public Item(String name, List<UserID> users) {
+    public Item(String name, ArrayList<UserID> users) {
         this.name = name;
         this.users = users;
     }
@@ -22,10 +22,10 @@ public abstract class Item {
     public void setName(String name) {
         this.name = name;
     }
-    public List<UserID> getUsers() {
+    public ArrayList<UserID> getUsers() {
         return users;
     }
-    public void setUsers(List<UserID> users) {
+    public void setUsers(ArrayList<UserID> users) {
         this.users = users;
     }
 

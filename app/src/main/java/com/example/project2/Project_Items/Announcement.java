@@ -3,7 +3,7 @@ package com.example.project2.Project_Items;
 import com.example.project2.database.entities.UserID;
 
 import java.util.HashMap;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Announcement extends Item{
@@ -11,7 +11,7 @@ public class Announcement extends Item{
     private String message;
     private HashMap<UserID,Boolean> usersViewed;
 
-    public Announcement(String name, List<UserID> users, String message) {
+    public Announcement(String name, ArrayList<UserID> users, String message) {
         super(name, users);
         this.message = message;
         usersViewed = new HashMap<>();

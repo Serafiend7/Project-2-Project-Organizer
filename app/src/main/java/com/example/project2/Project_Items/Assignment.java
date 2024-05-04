@@ -4,7 +4,7 @@ import com.example.project2.database.entities.UserID;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Assignment extends Item {
@@ -13,7 +13,7 @@ public class Assignment extends Item {
     private HashMap<UserID,Boolean> completedUsers;
     private LocalDateTime dueDate;
 
-    public Assignment(String name, List<UserID> users, String assignmentDetails, LocalDateTime dueDate) {
+    public Assignment(String name, ArrayList<UserID> users, String assignmentDetails, LocalDateTime dueDate) {
         super(name, users);
         this.assignmentDetails = assignmentDetails;
         completedUsers = new HashMap<>();
@@ -22,6 +22,14 @@ public class Assignment extends Item {
         }
         this.dueDate = dueDate;
     }
+
+    public Assignment(String name, ArrayList<UserID> users, String assignmentDetails, HashMap<UserID, Boolean> completedUsers, LocalDateTime dueDate) {
+        super(name, users);
+        this.assignmentDetails = assignmentDetails;
+        this.completedUsers = completedUsers;
+        this.dueDate = dueDate;
+    }
+
     public String getAssignmentDetails() {
         return assignmentDetails;
     }
