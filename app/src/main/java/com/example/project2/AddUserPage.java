@@ -36,8 +36,13 @@ public class AddUserPage extends AppCompatActivity {
         binding.CreateUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addUser(binding.EnterUsernameEditTextNumberSigned.getText().toString(), binding.EnterPasswordEditTextNumberSigned.getText().toString(), Boolean.parseBoolean(binding.EnterAdminStatusEditTextNumberSigned.getText().toString().toLowerCase(Locale.ROOT)));
-                Toast.makeText(AddUserPage.this, "User successfully created", Toast.LENGTH_SHORT).show();
+                if (!binding.EnterAdminStatusEditTextNumberSigned.getText().toString().toLowerCase(Locale.ROOT).equals("true") && !binding.EnterAdminStatusEditTextNumberSigned.getText().toString().toLowerCase(Locale.ROOT).equals("false")){
+                    Toast.makeText(AddUserPage.this, "Incorrect admin status, please re-enter admin status as either true or false.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    addUser(binding.EnterUsernameEditTextNumberSigned.getText().toString(), binding.EnterPasswordEditTextNumberSigned.getText().toString(), Boolean.parseBoolean(binding.EnterAdminStatusEditTextNumberSigned.getText().toString().toLowerCase(Locale.ROOT)));
+                    Toast.makeText(AddUserPage.this, "User successfully created", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
