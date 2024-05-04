@@ -4,6 +4,7 @@ package com.example.project2.Database.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.project2.Database.ProjectDatabase;
 import com.example.project2.Project_Items.Announcement;
 import com.example.project2.Project_Items.Assignment;
 import com.example.project2.Project_Items.Item;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-@Entity(tableName = "project")
+@Entity(tableName = ProjectDatabase.PROJECT_TABLE)
 public class Project {
     @PrimaryKey(autoGenerate = true)
     private int id;
