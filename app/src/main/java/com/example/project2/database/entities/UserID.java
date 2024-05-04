@@ -1,8 +1,10 @@
-package com.example.project2.Database.entities;
+package com.example.project2.database.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.example.project2.database.UserIDDatabase;
 
 import java.util.Objects;
 

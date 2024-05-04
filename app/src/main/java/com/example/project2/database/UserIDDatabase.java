@@ -1,4 +1,4 @@
-package com.example.project2.Database.entities;
+package com.example.project2.database;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,9 +9,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.project2.database.entities.UserID;
 import com.example.project2.MainActivity;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -55,6 +55,9 @@ public abstract class UserIDDatabase extends RoomDatabase {
 
                 UserID testUser1 = new UserID("testUser1", "testUser1", false);
                 dao.insert(testUser1);
+
+                UserID testUser2 = new UserID("testUser2", "testUser2", false);
+                dao.insert(testUser2);
 
             });
         }

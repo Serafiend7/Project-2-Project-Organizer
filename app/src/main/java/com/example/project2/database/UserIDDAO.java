@@ -1,10 +1,12 @@
-package com.example.project2.Database.entities;
+package com.example.project2.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+
+import com.example.project2.database.entities.UserID;
 
 import java.util.List;
 

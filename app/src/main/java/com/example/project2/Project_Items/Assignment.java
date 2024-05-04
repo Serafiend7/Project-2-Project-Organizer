@@ -1,8 +1,8 @@
 package com.example.project2.Project_Items;
 
-import com.example.project2.Database.entities.UserID;
+import com.example.project2.database.entities.UserID;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -11,9 +11,9 @@ public class Assignment extends Item {
 
     private String assignmentDetails;
     private HashMap<UserID,Boolean> completedUsers;
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
-    public Assignment(String name, List<UserID> users, String assignmentDetails, LocalDate dueDate) {
+    public Assignment(String name, List<UserID> users, String assignmentDetails, LocalDateTime dueDate) {
         super(name, users);
         this.assignmentDetails = assignmentDetails;
         completedUsers = new HashMap<>();
@@ -34,10 +34,10 @@ public class Assignment extends Item {
     public void setCompletedUsers(HashMap<UserID, Boolean> completedUsers) {
         this.completedUsers = completedUsers;
     }
-    public LocalDate getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
     public int totalCompleted() {

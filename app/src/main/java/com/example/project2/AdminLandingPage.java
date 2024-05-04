@@ -7,8 +7,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.project2.Database.entities.UserID;
-import com.example.project2.Database.entities.UserIDRepository;
 import com.example.project2.databinding.AdminLandingPageBinding;
 
 public class AdminLandingPage extends AppCompatActivity {

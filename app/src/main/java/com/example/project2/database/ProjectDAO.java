@@ -1,11 +1,11 @@
-package com.example.project2.Database;
+package com.example.project2.database;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.project2.Database.entities.Project;
+import com.example.project2.database.entities.Project;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,9 @@
-package com.example.project2.Database;
+package com.example.project2.database;
 
 import android.app.Application;
 import android.util.Log;
 
-import com.example.project2.Database.entities.Project;
+import com.example.project2.database.entities.Project;
 import com.example.project2.MainActivity;
 
 import java.util.ArrayList;
@@ -44,6 +44,7 @@ public class ProjectRepository {
         ProjectDatabase.databaseWriteExecutor.execute(() ->
                 {
                     projectDAO.insert(project);
+
                 });
     }
 

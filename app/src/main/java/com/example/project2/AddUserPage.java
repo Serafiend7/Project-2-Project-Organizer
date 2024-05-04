@@ -7,8 +7,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.project2.Database.entities.UserID;
-import com.example.project2.Database.entities.UserIDRepository;
+import com.example.project2.database.entities.UserID;
+import com.example.project2.database.UserIDRepository;
 import com.example.project2.databinding.AddUserPageBinding;
 
 import java.util.Locale;

@@ -1,15 +1,16 @@
-package com.example.project2.Database.entities;
+package com.example.project2.database.entities;
 
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.project2.Database.ProjectDatabase;
+import com.example.project2.database.ProjectDatabase;
 import com.example.project2.Project_Items.Announcement;
 import com.example.project2.Project_Items.Assignment;
 import com.example.project2.Project_Items.Item;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,15 +20,17 @@ public class Project {
     private int id;
 
     private UserID creator;
-    private List<UserID> sharedUsers;
-    private List<Item> items;
-    private LocalDate dueDate;
+    private ArrayList<UserID> sharedUsers;
+    private ArrayList<Item> items;
+    private LocalDateTime dueDate;
+    private ArrayList<String> name;
 
-    public Project(UserID creator, List<UserID> sharedUsers, List<Item> items, LocalDate dueDate) {
+    public Project(UserID creator, ArrayList<UserID> sharedUsers, ArrayList<Item> items, LocalDateTime dueDate, ArrayList<String> name) {
         this.creator = creator;
         this.sharedUsers = sharedUsers;
         this.items = items;
         this.dueDate = dueDate;
+        this.name = name;
     }
 
     public UserID getCreator() {
@@ -36,22 +39,22 @@ public class Project {
     public void setCreator(UserID creator) {
         this.creator = creator;
     }
-    public List<UserID> getSharedUsers() {
+    public ArrayList<UserID> getSharedUsers() {
         return sharedUsers;
     }
-    public void setSharedUsers(List<UserID> sharedUsers) {
+    public void setSharedUsers(ArrayList<UserID> sharedUsers) {
         this.sharedUsers = sharedUsers;
     }
-    public List<Item> getItems() {
+    public ArrayList<Item> getItems() {
         return items;
     }
-    public void setItems(List<Item> items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
-    public LocalDate getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
 
