@@ -10,20 +10,20 @@ import java.util.Objects;
 public class Assignment extends Item {
 
     private String assignmentDetails;
-    private HashMap<Integer,Boolean> completedUsers;
+    private HashMap<String,Boolean> completedUsers;
     private LocalDateTime dueDate;
 
-    public Assignment(String name, ArrayList<Integer> users, String assignmentDetails, LocalDateTime dueDate) {
+    public Assignment(String name, ArrayList<String> users, String assignmentDetails, LocalDateTime dueDate) {
         super(name, users);
         this.assignmentDetails = assignmentDetails;
         completedUsers = new HashMap<>();
-        for (Integer user : users) {
+        for (String user : users) {
             completedUsers.put(user,Boolean.FALSE);
         }
         this.dueDate = dueDate;
     }
 
-    public Assignment(String name, ArrayList<Integer> users, String assignmentDetails, HashMap<Integer, Boolean> completedUsers, LocalDateTime dueDate) {
+    public Assignment(String name, ArrayList<String> users, String assignmentDetails, HashMap<String, Boolean> completedUsers, LocalDateTime dueDate) {
         super(name, users);
         this.assignmentDetails = assignmentDetails;
         this.completedUsers = completedUsers;
@@ -36,10 +36,10 @@ public class Assignment extends Item {
     public void setAssignmentDetails(String assignmentDetails) {
         this.assignmentDetails = assignmentDetails;
     }
-    public HashMap<Integer, Boolean> getCompletedUsers() {
+    public HashMap<String, Boolean> getCompletedUsers() {
         return completedUsers;
     }
-    public void setCompletedUsers(HashMap<Integer, Boolean> completedUsers) {
+    public void setCompletedUsers(HashMap<String, Boolean> completedUsers) {
         this.completedUsers = completedUsers;
     }
     public LocalDateTime getDueDate() {

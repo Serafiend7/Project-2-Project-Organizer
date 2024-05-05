@@ -14,10 +14,11 @@ import com.example.project2.databinding.CreateProjectPageBinding;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CreateProjectPage extends AppCompatActivity {
 
-    CreateProjectPageBinding binding;
+    private CreateProjectPageBinding binding;
 
     private ProjectRepository repository;
 
@@ -29,7 +30,7 @@ public class CreateProjectPage extends AppCompatActivity {
         binding = CreateProjectPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        repository = ProjectRepository.getRepository(getApplication());
+        repository = ProjectRepository.getRepository(getApplication());
 
         binding.PreviousPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,16 +51,14 @@ public class CreateProjectPage extends AppCompatActivity {
 
         String name = binding.EnterProjectNameEditTextNumberSigned.getText().toString();
 
-        int id = 0;
-//        id = Integer.parseInt(binding.);
+        String creatorName = "user1";
+        //        creatorName = binding.;
 
-        ArrayList<Integer> sharedUserIDs = new ArrayList<>();
+        ArrayList<String> sharedUserNames = new ArrayList<>();
 
         String users = binding.EnterSharedUsersEditTextNumberSigned.getText().toString();
         String[] ids = users.split(",");
-        for (String s : ids) {
-            sharedUserIDs.add(Integer.parseInt(s));
-        }
+        sharedUserNames.addAll(Arrays.asList(ids));
 
 
         String date = binding.EnterDueDateEditTextNumberSigned.getText().toString();
@@ -75,7 +74,7 @@ public class CreateProjectPage extends AppCompatActivity {
         date += v[1] + " 00:00";
         LocalDateTime dueDate = LocalDateTime.parse(date,formatter);
 
-        Project project = new Project(name,id,sharedUserIDs,dueDate);
+        Project project = new Project(name,creatorName,sharedUserNames,dueDate);
 
         repository.insertProject(project);
 

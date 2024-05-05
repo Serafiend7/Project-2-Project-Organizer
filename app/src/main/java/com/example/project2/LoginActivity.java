@@ -1,5 +1,6 @@
 package com.example.project2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,6 @@ import com.example.project2.database.UserIDRepository;
 import com.example.project2.databinding.LoginPageBinding;
 
 public class LoginActivity extends AppCompatActivity {
-
 
     LoginPageBinding binding;
 
@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
                 }
                 else {
+//                    Intent intent = LandingPage.landingPageActivityIntentFactory(getApplicationContext(),repository.getUserByUserName(binding.EnterUsernameEditTextNumberSigned.getText().toString()).getId());
                     startActivity(new Intent(LoginActivity.this, LandingPage.class));
                     if (checkAdminStatus(binding.EnterUsernameEditTextNumberSigned.getText().toString())){
                         startActivity(new Intent(LoginActivity.this, AdminLandingPage.class));

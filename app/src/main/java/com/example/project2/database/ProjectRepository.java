@@ -17,10 +17,48 @@ public class ProjectRepository {
     private ProjectDAO projectDAO;
     private ArrayList<Project> allProjects;
 
-    public ProjectRepository(Application application) {
+    private static ProjectRepository repository;
+
+    private ProjectRepository(Application application) {
         ProjectDatabase db = ProjectDatabase.getDatabase(application);
         this.projectDAO = db.projectDAO();
         this.allProjects = (ArrayList<Project>) this.projectDAO.getAllRecords();
+    }
+
+    public static ProjectRepository getRepository(Application application) {
+        if (repository != null) {
+            return repository;
+        }
+        Future<ProjectRepository> future = ProjectDatabase.databaseWriteExecutor.submit(
+                new Callable<ProjectRepository>() {
+                    @Override
+                    public ProjectRepository call() throws Exception {
+                        return new ProjectRepository(application);
+                    }
+                }
+        );
+        try {
+            return future.get();
+        }catch (InterruptedException | ExecutionException e) {
+            Log.d(MainActivity.PROJECT_TAG, "Problem getting ProjectRepository, thread error");
+        }
+        return null;
+    }
+
+    public Project getProjectByProjectID(Integer id) {
+        Future<Project> future = ProjectDatabase.databaseWriteExecutor.submit(
+                new Callable<Project>() {
+                    @Override
+                    public Project call() throws Exception {
+                        return projectDAO.getProjectByProjectID(id);
+                    }
+                });
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.i(MainActivity.TAG, "Problem when getting user by userID");
+        }
+        return null;
     }
 
     public ArrayList<Project> getAllProjects() {

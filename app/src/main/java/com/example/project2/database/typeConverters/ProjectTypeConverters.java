@@ -31,43 +31,43 @@ public class ProjectTypeConverters {
     }
 
     @TypeConverter
-    public String convertIntegerListToString(ArrayList<Integer> Ids) {
+    public String convertStringListToString(ArrayList<String> names) {
         StringBuilder s = new StringBuilder();
-        for (Integer id : Ids) {
-            s.append(id).append("`");
+        for (String name : names) {
+            s.append(name).append("`");
         }
         return s.toString();
     }
 
     @TypeConverter
-    public ArrayList<Integer> convertStringToIntegerList(String s) {
-        ArrayList<Integer> r = new ArrayList<Integer>();
+    public ArrayList<String> convertStringToStringList(String s) {
+        ArrayList<String> r = new ArrayList<>();
         String[] v = s.split("[`,]");
         for (int i = 0; i < v.length; i+=3) {
-            r.add(Integer.parseInt(v[i]));
+            r.add(v[i]);
         }
         return r;
     }
 
 
     @TypeConverter
-    public String convertUserHashMapToString(HashMap<Integer,Boolean> users) {
+    public String convertUserHashMapToString(HashMap<String,Boolean> users) {
         StringBuilder s = new StringBuilder();
-        for (Integer user : users.keySet()) {
+        for (String user : users.keySet()) {
             s.append(user).append("`").append(users.get(user));
         }
         return s.toString();
     }
 
     @TypeConverter
-    public HashMap<Integer,Boolean> convertStringToUserHashMap (String s) {
-        HashMap<Integer,Boolean> userHashmap = new HashMap<>();
+    public HashMap<String,Boolean> convertStringToUserHashMap (String s) {
+        HashMap<String,Boolean> userHashmap = new HashMap<>();
         String[] v = s.split("`");
         for (int i = 0; i < v.length; i+= 2) {
-            Integer id = Integer.parseInt(v[i]);
+            String name = v[i];
             boolean completion;
             completion = Objects.equals(v[i+1], "true");
-            userHashmap.put(id,completion);
+            userHashmap.put(name,completion);
         }
         return userHashmap;
     }
@@ -75,7 +75,7 @@ public class ProjectTypeConverters {
     @TypeConverter
     public String convertAnnouncementToString(Announcement a) {
         String s = "";
-        s += a.getName() + "`" + convertIntegerListToString(a.getUsers()) + "`" +
+        s += a.getName() + "`" + convertStringListToString(a.getUsers()) + "`" +
                 a.getMessage() + convertUserHashMapToString(a.getUsersViewed());
         return s;
     }
@@ -91,21 +91,21 @@ public class ProjectTypeConverters {
             userList += v[i] + "`" + v[i+1];
             i+=2;
         }
-        ArrayList<Integer> users = convertStringToIntegerList(userList);
+        ArrayList<String> users = convertStringToStringList(userList);
         String message = v[i];
         String hashMap = "";
         while (i < v.length) {
             hashMap += v[i] + "`" + v[i+1];
             i += 2;
         }
-        HashMap<Integer,Boolean> map = convertStringToUserHashMap(hashMap);
+        HashMap<String,Boolean> map = convertStringToUserHashMap(hashMap);
         return new Announcement(name,users,message,map);
     }
 
     @TypeConverter
     public String convertAssignmentToString(Assignment a) {
         String s = "";
-        s += a.getName() + "`" + convertIntegerListToString(a.getUsers()) + "`" +
+        s += a.getName() + "`" + convertStringListToString(a.getUsers()) + "`" +
                 a.getAssignmentDetails() + "`" + convertUserHashMapToString(a.getCompletedUsers()) + "`" + convertDateToLong(a.getDueDate());
         return s;
     }
@@ -121,7 +121,7 @@ public class ProjectTypeConverters {
             userList += v[i] + "`" + v[i+1];
             i+=2;
         }
-        ArrayList<Integer> users = convertStringToIntegerList(userList);
+        ArrayList<String> users = convertStringToStringList(userList);
         String details = v[i];
         i++;
         String hashMap = "";
@@ -129,7 +129,7 @@ public class ProjectTypeConverters {
             hashMap += v[i] + "`" + v[i+1];
             i += 2;
         }
-        HashMap<Integer,Boolean> completion = convertStringToUserHashMap(hashMap);
+        HashMap<String,Boolean> completion = convertStringToUserHashMap(hashMap);
         LocalDateTime dueDate = convertLongToDate(parseLong(v[i]));
 
         return new Assignment(name,users,details,completion,dueDate);

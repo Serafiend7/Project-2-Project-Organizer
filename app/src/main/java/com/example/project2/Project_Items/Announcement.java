@@ -9,18 +9,18 @@ import java.util.Objects;
 public class Announcement extends Item{
 
     private String message;
-    private HashMap<Integer,Boolean> usersViewed;
+    private HashMap<String,Boolean> usersViewed;
 
-    public Announcement(String name, ArrayList<Integer> users, String message) {
+    public Announcement(String name, ArrayList<String> users, String message) {
         super(name, users);
         this.message = message;
         usersViewed = new HashMap<>();
-        for (Integer user : users) {
+        for (String user : users) {
             usersViewed.put(user,Boolean.FALSE);
         }
     }
 
-    public Announcement(String name, ArrayList<Integer> userIDlist, String message, HashMap<Integer, Boolean> usersViewed) {
+    public Announcement(String name, ArrayList<String> userIDlist, String message, HashMap<String, Boolean> usersViewed) {
         super(name, userIDlist);
         this.message = message;
         this.usersViewed = usersViewed;
@@ -32,14 +32,20 @@ public class Announcement extends Item{
     public void setMessage(String message) {
         this.message = message;
     }
-    public HashMap<Integer, Boolean> getUsersViewed() {
+    public HashMap<String, Boolean> getUsersViewed() {
         return usersViewed;
     }
-    public void setUsersViewed(HashMap<Integer, Boolean> usersViewed) {
+    public void setUsersViewed(HashMap<String, Boolean> usersViewed) {
         this.usersViewed = usersViewed;
     }
     public int getViewCount() {
-        return usersViewed.size();
+        int views = 0;
+        for (String user : usersViewed.keySet()) {
+            if (Boolean.TRUE.equals(usersViewed.get(user))) {
+                views++;
+            }
+        }
+        return views;
     }
 
     @Override
