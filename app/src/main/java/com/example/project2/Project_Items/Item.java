@@ -8,12 +8,12 @@ import java.util.Objects;
 public abstract class Item {
 
     private String name;
-    private ArrayList<UserID> users;
+    private ArrayList<Integer> userIDlist;
 
 
-    public Item(String name, ArrayList<UserID> users) {
+    public Item(String name, ArrayList<Integer> userIDlist) {
         this.name = name;
-        this.users = users;
+        this.userIDlist = userIDlist;
     }
 
     public String getName() {
@@ -22,11 +22,11 @@ public abstract class Item {
     public void setName(String name) {
         this.name = name;
     }
-    public ArrayList<UserID> getUsers() {
-        return users;
+    public ArrayList<Integer> getUsers() {
+        return userIDlist;
     }
-    public void setUsers(ArrayList<UserID> users) {
-        this.users = users;
+    public void setUsers(ArrayList<Integer> userIDlist) {
+        this.userIDlist = userIDlist;
     }
 
     @Override
@@ -34,11 +34,11 @@ public abstract class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return Objects.equals(name, item.name) && Objects.equals(users, item.users);
+        return Objects.equals(name, item.name) && Objects.equals(userIDlist, item.userIDlist);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, users);
+        return Objects.hash(name, userIDlist);
     }
 }

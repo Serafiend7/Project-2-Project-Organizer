@@ -19,31 +19,29 @@ public class Project {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private UserID creator;
-    private ArrayList<UserID> sharedUsers;
+    private int creatorID;
+    private ArrayList<Integer> sharedUserIDs;
     private ArrayList<Item> items;
     private LocalDateTime dueDate;
-    private ArrayList<String> name;
 
-    public Project(UserID creator, ArrayList<UserID> sharedUsers, ArrayList<Item> items, LocalDateTime dueDate, ArrayList<String> name) {
-        this.creator = creator;
-        this.sharedUsers = sharedUsers;
+    public Project(int creatorID, ArrayList<Integer> sharedUserIDS, ArrayList<Item> items, LocalDateTime dueDate) {
+        this.creatorID = creatorID;
+        this.sharedUserIDs = sharedUserIDS;
         this.items = items;
         this.dueDate = dueDate;
-        this.name = name;
     }
 
-    public UserID getCreator() {
-        return creator;
+    public int getCreator() {
+        return creatorID;
     }
-    public void setCreator(UserID creator) {
-        this.creator = creator;
+    public void setCreator(int creatorID) {
+        this.creatorID = creatorID;
     }
-    public ArrayList<UserID> getSharedUsers() {
-        return sharedUsers;
+    public ArrayList<Integer> getSharedUserIDs() {
+        return sharedUserIDs;
     }
-    public void setSharedUsers(ArrayList<UserID> sharedUsers) {
-        this.sharedUsers = sharedUsers;
+    public void setSharedUsers(ArrayList<Integer> sharedUserIDs) {
+        this.sharedUserIDs = sharedUserIDs;
     }
     public ArrayList<Item> getItems() {
         return items;
@@ -56,6 +54,14 @@ public class Project {
     }
     public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void addAssignment(Assignment a) {
@@ -76,11 +82,11 @@ public class Project {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Project project = (Project) o;
-        return id == project.id && Objects.equals(creator, project.creator) && Objects.equals(sharedUsers, project.sharedUsers) && Objects.equals(items, project.items);
+        return id == project.id && Objects.equals(creatorID, project.creatorID) && Objects.equals(sharedUserIDs, project.sharedUserIDs) && Objects.equals(items, project.items);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, creator, sharedUsers, items);
+        return Objects.hash(id, creatorID, sharedUserIDs, items);
     }
 }

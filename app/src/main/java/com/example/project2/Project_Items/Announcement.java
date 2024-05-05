@@ -9,15 +9,21 @@ import java.util.Objects;
 public class Announcement extends Item{
 
     private String message;
-    private HashMap<UserID,Boolean> usersViewed;
+    private HashMap<Integer,Boolean> usersViewed;
 
-    public Announcement(String name, ArrayList<UserID> users, String message) {
+    public Announcement(String name, ArrayList<Integer> users, String message) {
         super(name, users);
         this.message = message;
         usersViewed = new HashMap<>();
-        for (UserID user : users) {
+        for (Integer user : users) {
             usersViewed.put(user,Boolean.FALSE);
         }
+    }
+
+    public Announcement(String name, ArrayList<Integer> userIDlist, String message, HashMap<Integer, Boolean> usersViewed) {
+        super(name, userIDlist);
+        this.message = message;
+        this.usersViewed = usersViewed;
     }
 
     public String getMessage() {
@@ -26,10 +32,10 @@ public class Announcement extends Item{
     public void setMessage(String message) {
         this.message = message;
     }
-    public HashMap<UserID, Boolean> getUsersViewed() {
+    public HashMap<Integer, Boolean> getUsersViewed() {
         return usersViewed;
     }
-    public void setUsersViewed(HashMap<UserID, Boolean> usersViewed) {
+    public void setUsersViewed(HashMap<Integer, Boolean> usersViewed) {
         this.usersViewed = usersViewed;
     }
     public int getViewCount() {
