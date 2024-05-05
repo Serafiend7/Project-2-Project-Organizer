@@ -29,5 +29,9 @@
     <string name="enter_your_username">Enter Your Username</string>
     <string name="enter_your_password">Enter Your Password</string>
     <string name="confirm_your_password">Confirm Your Password</string>
+    <string name="create_your_project">Create Your Project</string>
+    <string name="enter_project_name">Enter Project Name</string>
+    <string name="enter_shared_users">Enter Shared Users</string>
+    <string name="enter_due_date">Enter Due Date</string>
 
 </resources>
