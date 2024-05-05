@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.project2.database.entities.Project;
+import com.example.project2.database.entities.UserID;
 
 import java.util.List;
 
@@ -17,4 +18,7 @@ public interface ProjectDAO {
 
     @Query("Select * from " + ProjectDatabase.PROJECT_TABLE)
     List<Project> getAllRecords();
+
+//    @Query("SELECT * from " + UserIDDatabase.USER_ID_TABLE + " WHERE id == :id")
+//    Project getProjectByProjectID(Integer id);
 }

@@ -20,6 +20,7 @@ public class Project {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    private String name;
     private int creatorID;
     private ArrayList<Integer> sharedUserIDs;
     private ArrayList<Item> items;
@@ -28,13 +29,28 @@ public class Project {
     @Deprecated
     public Project(){};
 
-    public Project(int creatorID, ArrayList<Integer> sharedUserIDS, ArrayList<Item> items, LocalDateTime dueDate) {
+    public Project(String name,int creatorID, ArrayList<Integer> sharedUserIDS, ArrayList<Item> items, LocalDateTime dueDate) {
+        this.name = name;
         this.creatorID = creatorID;
         this.sharedUserIDs = sharedUserIDS;
         this.items = items;
         this.dueDate = dueDate;
     }
 
+    public Project(String name,int creatorID, ArrayList<Integer> sharedUserIDs, LocalDateTime dueDate) {
+        this.name = name;
+        this.creatorID = creatorID;
+        this.sharedUserIDs = sharedUserIDs;
+        this.dueDate = dueDate;
+        items = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
     public int getCreatorID() {
         return creatorID;
     }

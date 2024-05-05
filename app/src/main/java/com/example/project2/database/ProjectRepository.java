@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.project2.database.entities.Project;
 import com.example.project2.MainActivity;
+import com.example.project2.database.entities.UserID;
 
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
@@ -47,5 +48,21 @@ public class ProjectRepository {
 
                 });
     }
+
+//    public Project getProjectByProjectID(Integer id) {
+//        Future<Project> future = ProjectDatabase.databaseWriteExecutor.submit(
+//                new Callable<Project>() {
+//                    @Override
+//                    public Project call() throws Exception {
+//                        return ProjectDAO.getProjectByProjectID(id);
+//                    }
+//                });
+//        try {
+//            return future.get();
+//        } catch (InterruptedException | ExecutionException e) {
+//            Log.i(MainActivity.TAG, "Problem when getting user by userID");
+//        }
+//        return null;
+//    }
 
 }

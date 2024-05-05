@@ -6,11 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/Add_Project_TextView"
+        android:id="@+id/Open_Project_TextView"
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:layout_marginTop="28dp"
-        android:text="@string/create_project"
+        android:text="@string/open_project"
         android:textSize="32sp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,68 +18,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.061"/>
+
     <EditText
-        android:id="@+id/Enter_Project_Name_editTextNumberSigned"
+        android:id="@+id/Enter_Project_Id_editTextNumberSigned"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="100dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/enter_project_name"
+        android:hint="@string/enter_project_id"
         android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Add_Project_TextView"
+        app:layout_constraintTop_toBottomOf="@+id/Open_Project_TextView"
         tools:ignore="TextFields" />
-
-    <EditText
-        android:id="@+id/Enter_Shared_Users_editTextNumberSigned"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/enter_user_ids"
-        android:inputType="text"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Enter_Project_Name_editTextNumberSigned"
-        tools:ignore="TextFields" />
-
-    <EditText
-        android:id="@+id/Enter_DueDate_editTextNumberSigned"
-        android:layout_width="275dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="44dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/enter_due_date"
-        android:inputType="text"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Enter_Shared_Users_editTextNumberSigned"
-        tools:ignore="TextFields" />
-
     <Button
-        android:id="@+id/Create_Project_Button"
+        android:id="@+id/Create_Account_Button"
         android:layout_width="277dp"
         android:layout_height="88dp"
         android:layout_marginTop="68dp"
-        android:text="@string/create_project"
+        android:text="@string/open_project"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Enter_DueDate_editTextNumberSigned" />
+        app:layout_constraintTop_toBottomOf="@id/Enter_Project_Id_editTextNumberSigned" />
 
     <Button
         android:id="@+id/Previous_Page_Button"
