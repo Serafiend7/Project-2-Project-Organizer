@@ -23,17 +23,20 @@ public class Project {
     private String name;
     private int creatorID;
     private ArrayList<Integer> sharedUserIDs;
-    private ArrayList<Item> items;
+    private ArrayList<Assignment> assignments;
+
+    private ArrayList<Announcement> announcements;
     private LocalDateTime dueDate;
 
     @Deprecated
     public Project(){};
 
-    public Project(String name,int creatorID, ArrayList<Integer> sharedUserIDS, ArrayList<Item> items, LocalDateTime dueDate) {
+    public Project(String name,int creatorID, ArrayList<Integer> sharedUserIDS, ArrayList<Assignment> assignments, ArrayList<Announcement> announcements, LocalDateTime dueDate) {
         this.name = name;
         this.creatorID = creatorID;
         this.sharedUserIDs = sharedUserIDS;
-        this.items = items;
+        this.assignments = assignments;
+        this.announcements = announcements;
         this.dueDate = dueDate;
     }
 
@@ -42,7 +45,8 @@ public class Project {
         this.creatorID = creatorID;
         this.sharedUserIDs = sharedUserIDs;
         this.dueDate = dueDate;
-        items = new ArrayList<>();
+        assignments = new ArrayList<>();
+        announcements = new ArrayList<>();
     }
 
     public String getName() {
@@ -63,12 +67,19 @@ public class Project {
     public void setSharedUserIDs(ArrayList<Integer> sharedUserIDs) {
         this.sharedUserIDs = sharedUserIDs;
     }
-    public ArrayList<Item> getItems() {
-        return items;
+    public ArrayList<Assignment> getAssignments() {
+        return assignments;
     }
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
+    public void setAssignments(ArrayList<Assignment> assignments) {
+        this.assignments = assignments;
     }
+    public ArrayList<Announcement> getAnnouncements() {
+        return announcements;
+    }
+    public void setAnnouncements(ArrayList<Announcement> announcements) {
+        this.announcements = announcements;
+    }
+
     public LocalDateTime getDueDate() {
         return dueDate;
     }
@@ -85,16 +96,16 @@ public class Project {
     }
 
     public void addAssignment(Assignment a) {
-        items.add(a);
+        assignments.add(a);
     }
     public void deleteAssignment(Assignment a) {
-        items.remove(a);
+        assignments.remove(a);
     }
     public void addAnnouncement(Announcement a) {
-        items.add(a);
+        announcements.add(a);
     }
     public void deleteAnnouncement(Announcement a) {
-        items.remove(a);
+        announcements.remove(a);
     }
 
     @Override
@@ -102,11 +113,11 @@ public class Project {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Project project = (Project) o;
-        return id == project.id && Objects.equals(creatorID, project.creatorID) && Objects.equals(sharedUserIDs, project.sharedUserIDs) && Objects.equals(items, project.items);
+        return id == project.id && creatorID == project.creatorID && Objects.equals(name, project.name) && Objects.equals(sharedUserIDs, project.sharedUserIDs) && Objects.equals(assignments, project.assignments) && Objects.equals(announcements, project.announcements) && Objects.equals(dueDate, project.dueDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, creatorID, sharedUserIDs, items);
+        return Objects.hash(id, name, creatorID, sharedUserIDs, assignments, announcements, dueDate);
     }
 }

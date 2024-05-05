@@ -47,5 +47,9 @@
     <string name="enter_assignment_name">Enter Assignment Name</string>
     <string name="enter_assignment_details">Enter Assignment Details</string>
     <string name="assignments">Assignments</string>
+    <string name="view_assignments">View Assignments</string>
+    <string name="assignment_complete">Assignment Complete</string>
+    <string name="project_id">Project Id:</string>
+    <string name="user_id">User Id</string>
 
 </resources>
