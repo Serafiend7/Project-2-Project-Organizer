@@ -1,6 +1,8 @@
 package com.example.project2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -8,7 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project2.database.ProjectRepository;
+import com.example.project2.database.UserIDRepository;
 import com.example.project2.database.entities.Project;
+import com.example.project2.database.entities.UserID;
 import com.example.project2.databinding.CreateProjectPageBinding;
 
 import java.time.LocalDateTime;
@@ -18,9 +22,17 @@ import java.util.Arrays;
 
 public class CreateProjectPage extends AppCompatActivity {
 
+
+    private static final String ID_EXTRA_KEY = "CreateProjectPage_Received_Id";
+
     private CreateProjectPageBinding binding;
 
     private ProjectRepository repository;
+    private UserIDRepository userRepository;
+
+    private int creatorID;
+
+    private int projectID;
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
@@ -41,8 +53,9 @@ public class CreateProjectPage extends AppCompatActivity {
 
         binding.CreateProjectButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                getCreatorID(savedInstanceState);
                 createProject();
-                Toast.makeText(CreateProjectPage.this, "Project successfully created", Toast.LENGTH_SHORT).show();
+                toastTextId(projectID);
             }
         });
     }
@@ -51,8 +64,8 @@ public class CreateProjectPage extends AppCompatActivity {
 
         String name = binding.EnterProjectNameEditTextNumberSigned.getText().toString();
 
-        String creatorName = "user1";
-        //        creatorName = binding.;
+        UserID user = userRepository.getUserByUserID(creatorID);
+        String creatorName = user.getUsername();
 
         ArrayList<String> sharedUserNames = new ArrayList<>();
 
@@ -77,6 +90,37 @@ public class CreateProjectPage extends AppCompatActivity {
         Project project = new Project(name,creatorName,sharedUserNames,dueDate);
 
         repository.insertProject(project);
+        projectID = repository.getProjectByProjectName(project.getName()).getId();
 
     }
+
+    public static Intent createProjectPageIntentFactory(Context context, int userId) {
+        Intent intent = new Intent(context, CreateProjectPage.class);
+        intent.putExtra(ID_EXTRA_KEY,userId);
+        return intent;
+    }
+
+    private void getCreatorID(Bundle savedInstanceState) {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences(LandingPage.SHARED_PREFERENCE_USERID_KEY, Context.MODE_PRIVATE);
+
+        if (preferences.contains(LandingPage.SHARED_PREFERENCE_USERID_KEY)) {
+            creatorID = preferences.getInt(LandingPage.SHARED_PREFERENCE_USERID_KEY,-1);
+        }
+        if (creatorID == -1 & savedInstanceState != null && savedInstanceState.containsKey(LandingPage.SHARED_PREFERENCE_USERID_KEY)) {
+            creatorID = savedInstanceState.getInt(LandingPage.SHARED_PREFERENCE_USERID_KEY,-1);
+        }
+        if (creatorID == -1) {
+            creatorID = getIntent().getIntExtra(LandingPage.LANDING_PAGE_USER_ID,-1);
+        }
+        if (creatorID == -1) {
+            return;
+        }
+
+    }
+
+    private void toastTextId(int id) {
+        String text = "Project successfully created, id is " + id;
+        Toast.makeText(CreateProjectPage.this, text, Toast.LENGTH_SHORT).show();
+    }
+
 }

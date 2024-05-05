@@ -18,11 +18,11 @@ import java.util.Locale;
 public class LandingPage extends AppCompatActivity {
 
     private static final int LOGGED_OUT = -1;
-    private static final String SHARED_PREFERENCE_USERID_VALUE = "com.example.project2.SHARED_PREFERENCE_USERID_VALUE";
-    private static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.example.project2.SAVED_INSTANCE_STATE_USERID_KEY";
-    private final String LANDING_PAGE_USER_ID = "com.example.project2.LANDING_PAGE_USER_ID";
+    static final String SHARED_PREFERENCE_USERID_VALUE = "com.example.project2.SHARED_PREFERENCE_USERID_VALUE";
+    static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.example.project2.SAVED_INSTANCE_STATE_USERID_KEY";
+    static final String LANDING_PAGE_USER_ID = "com.example.project2.LANDING_PAGE_USER_ID";
     static final String SHARED_PREFERENCE_USERID_KEY = "com.example.project2.SHARED_PREFERENCE_USERID_KEY";
-    private static final String ID_EXTRA_KEY = "LandingPage_Received_Id";
+    static final String ID_EXTRA_KEY = "LandingPage_Received_Id";
 
     LandingPageBinding binding;
 
@@ -113,4 +113,11 @@ public class LandingPage extends AppCompatActivity {
 
         startActivity(LoginActivity.loginPageActivityIntentFactory(getApplicationContext()));
     }
+
+    public int getLoginUserID(){
+        int loginUserID1 = loginUserID;
+        return loginUserID1;
     }
+
+}
+

@@ -56,7 +56,7 @@ public class ProjectRepository {
         try {
             return future.get();
         } catch (InterruptedException | ExecutionException e) {
-            Log.i(MainActivity.TAG, "Problem when getting user by userID");
+            Log.i(MainActivity.PROJECT_TAG, "Problem when getting project by project ID");
         }
         return null;
     }
@@ -79,6 +79,22 @@ public class ProjectRepository {
         return null;
     }
 
+    public Project getProjectByProjectName(String name) {
+        Future<Project> future = UserIDDatabase.databaseWriteExecutor.submit(
+                new Callable<Project>() {
+                    @Override
+                    public Project call() throws Exception {
+                        return projectDAO.getProjectByProjectName(name);
+                    }
+                });
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.i(MainActivity.PROJECT_TAG, "Problem when getting project by name");
+        }
+        return null;
+    }
+
     public void insertProject(Project project) {
         ProjectDatabase.databaseWriteExecutor.execute(() ->
                 {
@@ -86,21 +102,5 @@ public class ProjectRepository {
 
                 });
     }
-
-//    public Project getProjectByProjectID(Integer id) {
-//        Future<Project> future = ProjectDatabase.databaseWriteExecutor.submit(
-//                new Callable<Project>() {
-//                    @Override
-//                    public Project call() throws Exception {
-//                        return ProjectDAO.getProjectByProjectID(id);
-//                    }
-//                });
-//        try {
-//            return future.get();
-//        } catch (InterruptedException | ExecutionException e) {
-//            Log.i(MainActivity.TAG, "Problem when getting user by userID");
-//        }
-//        return null;
-//    }
 
 }
