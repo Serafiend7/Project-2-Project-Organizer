@@ -1,6 +1,7 @@
 package com.example.project2.database.entities;
 
 
+import androidx.room.Delete;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -24,6 +25,9 @@ public class Project {
     private ArrayList<Item> items;
     private LocalDateTime dueDate;
 
+    @Deprecated
+    public Project(){};
+
     public Project(int creatorID, ArrayList<Integer> sharedUserIDS, ArrayList<Item> items, LocalDateTime dueDate) {
         this.creatorID = creatorID;
         this.sharedUserIDs = sharedUserIDS;
@@ -31,16 +35,16 @@ public class Project {
         this.dueDate = dueDate;
     }
 
-    public int getCreator() {
+    public int getCreatorID() {
         return creatorID;
     }
-    public void setCreator(int creatorID) {
+    public void setCreatorID(int creatorID) {
         this.creatorID = creatorID;
     }
     public ArrayList<Integer> getSharedUserIDs() {
         return sharedUserIDs;
     }
-    public void setSharedUsers(ArrayList<Integer> sharedUserIDs) {
+    public void setSharedUserIDs(ArrayList<Integer> sharedUserIDs) {
         this.sharedUserIDs = sharedUserIDs;
     }
     public ArrayList<Item> getItems() {

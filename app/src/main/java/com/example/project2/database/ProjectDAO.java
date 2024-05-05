@@ -7,7 +7,7 @@ import androidx.room.Query;
 
 import com.example.project2.database.entities.Project;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Dao
 public interface ProjectDAO {
@@ -16,5 +16,5 @@ public interface ProjectDAO {
     void insert(Project p);
 
     @Query("Select * from " + ProjectDatabase.PROJECT_TABLE)
-    ArrayList<Project> getAllRecords();
+    List<Project> getAllRecords();
 }

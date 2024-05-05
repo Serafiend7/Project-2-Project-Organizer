@@ -166,9 +166,9 @@ public class ProjectTypeConverters {
                 i++;
                 a+= v[i];
                 i++;
-                while (Objects.equals(v[i+2], "true") || Objects.equals(v[i+2], "false")) {
-                    a += v[i] + "," + v[i+1] + "," + v[i+2] + ",";
-                    i += 3;
+                while (Objects.equals(v[i+1], "true") || Objects.equals(v[i+1], "false")) {
+                    a += v[i] + "," + v[i+1] + ",";
+                    i += 2;
                 }
                 a+= v[i] + ",";
                 i++;
@@ -185,11 +185,15 @@ public class ProjectTypeConverters {
                 i++;
                 a += v[i] + ",";
                 i++;
-                while (Objects.equals(v[i+2], "true") || Objects.equals(v[i+2], "false")) {
+                while (Objects.equals(v[i+1], "true") || Objects.equals(v[i+1], "false")) {
                     a += v[i] + "," + v[i+1] + "," + v[i+2] + ",";
-                    i += 3;
                 }
                 a+= v[i] + ",";
+                i++;
+                while (Objects.equals(v[i+1], "true") || Objects.equals(v[i+1], "false")) {
+                    a += v[i] + "," + v[i+1] + ",";
+                    i += 2;
+                }
                 returns.add(convertStringToAnnouncement(a));
                 i++;
             }
