@@ -22,7 +22,7 @@ public interface UserIDDAO {
     @Delete
     void delete(UserID userID);
 
-    @Query("Select * from " + UserIDDatabase.USER_ID_TABLE + " ORDER BY username")
+    @Query("Select * from " + UserIDDatabase.USER_ID_TABLE + " ORDER BY id")
     List<UserID> getAllRecords();
 
     @Query("DELETE from " + UserIDDatabase.USER_ID_TABLE)
