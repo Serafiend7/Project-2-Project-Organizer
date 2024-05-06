@@ -19,30 +19,17 @@ public class Assignment extends Item {
     private int id;
 
     private String assignmentDetails;
-    private HashMap<Integer,Boolean> completedUsers;
     private LocalDateTime dueDate;
 
     public Assignment() {
         super("", new ArrayList<>());
         assignmentDetails = "";
-        completedUsers = new HashMap<>();
         dueDate = LocalDateTime.parse("0000-00-00T00:00");
     }
 
     public Assignment(String name, ArrayList<Integer> users, String assignmentDetails, LocalDateTime dueDate) {
         super(name, users);
         this.assignmentDetails = assignmentDetails;
-        completedUsers = new HashMap<>();
-        for (Integer user : users) {
-            completedUsers.put(user,Boolean.FALSE);
-        }
-        this.dueDate = dueDate;
-    }
-
-    public Assignment(String name, ArrayList<Integer> users, String assignmentDetails, HashMap<Integer, Boolean> completedUsers, LocalDateTime dueDate) {
-        super(name, users);
-        this.assignmentDetails = assignmentDetails;
-        this.completedUsers = completedUsers;
         this.dueDate = dueDate;
     }
 
@@ -52,12 +39,7 @@ public class Assignment extends Item {
     public void setAssignmentDetails(String assignmentDetails) {
         this.assignmentDetails = assignmentDetails;
     }
-    public HashMap<Integer, Boolean> getCompletedUsers() {
-        return completedUsers;
-    }
-    public void setCompletedUsers(HashMap<Integer, Boolean> completedUsers) {
-        this.completedUsers = completedUsers;
-    }
+
     public LocalDateTime getDueDate() {
         return dueDate;
     }
@@ -70,34 +52,23 @@ public class Assignment extends Item {
     public void setId(int id) {
         this.id = id;
     }
-    public int totalCompleted() {
-        int total = 0;
-        for(Boolean b : completedUsers.values()) {
-            if (b) {
-                total++;
-            }
-        }
-        return total;
-    }
-    public int totalMissing() {
-        int total = 0;
-        for (Boolean b : completedUsers.values()) {
-            if (!b) {
-                total++;
-            }
-        }
-        return total;
-    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Assignment that = (Assignment) o;
-        return Objects.equals(assignmentDetails, that.assignmentDetails) && Objects.equals(completedUsers, that.completedUsers);
+        return id == that.id && Objects.equals(assignmentDetails, that.assignmentDetails) && Objects.equals(dueDate, that.dueDate);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), assignmentDetails, completedUsers);
+        return Objects.hash(super.hashCode(), id, assignmentDetails, dueDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Assignment: " + getName() + "\n" + assignmentDetails + '\n' + "Due Date: " + dueDate.toString();
     }
 }

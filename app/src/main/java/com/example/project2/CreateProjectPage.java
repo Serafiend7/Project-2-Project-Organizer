@@ -27,8 +27,10 @@ public class CreateProjectPage extends AppCompatActivity {
 
     private CreateProjectPageBinding binding;
 
-    private ProjectRepository repository;
     private UserIDRepository userRepository;
+    private ProjectRepository repository;
+
+    private Project createdProject;
 
     private int creatorID;
 
@@ -42,6 +44,9 @@ public class CreateProjectPage extends AppCompatActivity {
         binding = CreateProjectPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        repository = ProjectRepository.getRepository(getApplication());
+        userRepository = UserIDRepository.getRepository(getApplication());
+
         binding.PreviousPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,11 +56,10 @@ public class CreateProjectPage extends AppCompatActivity {
 
         binding.CreateProjectButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                repository = ProjectRepository.getRepository(getApplication());
-                userRepository = UserIDRepository.getRepository(getApplication());
                 getCreatorID(savedInstanceState);
                 createProject();
-                toastTextId(projectID);
+                repository.insertProject(createdProject);
+                Toast.makeText(CreateProjectPage.this,"Project successfully created", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -89,10 +93,8 @@ public class CreateProjectPage extends AppCompatActivity {
         date += v[1] + " 00:00";
         LocalDateTime dueDate = LocalDateTime.parse(date,formatter);
 
-        Project project = new Project(name,creatorName,sharedUserIDs,dueDate);
+        createdProject = new Project(name,creatorName,sharedUserIDs,dueDate);
 
-        repository.insertProject(project);
-        projectID = repository.getProjectByProjectName(project.getName()).getId();
 
     }
 

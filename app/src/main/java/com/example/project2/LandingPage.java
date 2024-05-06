@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +17,6 @@ import java.util.Locale;
 public class LandingPage extends AppCompatActivity {
 
     private static final int LOGGED_OUT = -1;
-    static final String SHARED_PREFERENCE_USERID_VALUE = "com.example.project2.SHARED_PREFERENCE_USERID_VALUE";
     static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.example.project2.SAVED_INSTANCE_STATE_USERID_KEY";
     static final String LANDING_PAGE_USER_ID = "com.example.project2.LANDING_PAGE_USER_ID";
     static final String SHARED_PREFERENCE_USERID_KEY = "com.example.project2.SHARED_PREFERENCE_USERID_KEY";
@@ -51,33 +49,13 @@ public class LandingPage extends AppCompatActivity {
 
         binding.LandingPageTextView.setText(String.format(Locale.ENGLISH, "Welcome %s!",name));
 
-        binding.LogoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logOut();
-            }
-        });
+        binding.LogoutButton.setOnClickListener(v -> logOut());
 
-        binding.CreateProjectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LandingPage.this, CreateProjectPage.class));
-            }
-        });
+        binding.CreateProjectButton.setOnClickListener(v -> startActivity(new Intent(LandingPage.this, CreateProjectPage.class)));
 
-        binding.OpenProjectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LandingPage.this, OpenProjectPage.class));
-            }
-        });
+        binding.OpenProjectButton.setOnClickListener(v -> startActivity(new Intent(LandingPage.this, OpenProjectPage.class)));
 
-        binding.SharedProjectsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LandingPage.this, SharedProjectPage.class));
-            }
-        });
+        binding.SharedProjectsButton.setOnClickListener(v -> startActivity(new Intent(LandingPage.this, SharedProjectPage.class)));
     }
 
     private void logIn(Bundle savedInstanceState) {
@@ -91,9 +69,6 @@ public class LandingPage extends AppCompatActivity {
         }
         if (loginUserID == LOGGED_OUT) {
             loginUserID = getIntent().getIntExtra(LANDING_PAGE_USER_ID,LOGGED_OUT);
-        }
-        if (loginUserID == LOGGED_OUT) {
-            return;
         }
 
     }
@@ -112,11 +87,6 @@ public class LandingPage extends AppCompatActivity {
         getIntent().putExtra(LANDING_PAGE_USER_ID,LOGGED_OUT);
 
         startActivity(LoginActivity.loginPageActivityIntentFactory(getApplicationContext()));
-    }
-
-    public int getLoginUserID(){
-        int loginUserID1 = loginUserID;
-        return loginUserID1;
     }
 
 }

@@ -3,50 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NotCreatorAnnouncements">
 
     <TextView
-        android:id="@+id/Open_Assignment_TextView"
+        android:id="@+id/Announcements_Page_TextView"
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:layout_marginTop="28dp"
-        android:text="@string/open_assignment"
+        android:text="@string/announcements"
         android:textSize="32sp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.061"/>
 
-
-    <EditText
-        android:id="@+id/Enter_Assignment_Name_editTextNumberSigned"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/enter_assignment_name"
-        android:inputType="number"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Open_Assignment_TextView"
-        tools:ignore="TextFields" />
-
-    <Button
-        android:id="@+id/Open_Assignment_Button"
-        android:layout_width="277dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="68dp"
-        android:text="@string/open_assignment"
-        android:textSize="24sp"
+    <TextView
+        android:id="@+id/List_Of_Announcements"
+        android:layout_width="250dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="28dp"
+        android:textSize="16sp"
+        android:gravity="start"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Enter_Assignment_Name_editTextNumberSigned" />
+        app:layout_constraintTop_toBottomOf="@id/Announcements_Page_TextView"
+        app:layout_constraintVertical_bias="0.061"/>
 
     <Button
         android:id="@+id/Previous_Page_Button"

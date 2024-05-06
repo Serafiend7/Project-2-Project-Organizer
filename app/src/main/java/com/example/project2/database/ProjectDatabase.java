@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @TypeConverters(ProjectTypeConverters.class)
-@Database(entities = {Project.class}, version = 1, exportSchema = false)
+@Database(entities = {Project.class}, version = 3, exportSchema = false)
 public abstract class ProjectDatabase extends RoomDatabase {
 
     private static final String DATA_BASE_NAME = "Project_database";

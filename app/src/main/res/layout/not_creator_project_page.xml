@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NotCreatorProjectPage">
 
     <TextView
         android:id="@+id/Not_Creator_Project_Page_TextView"
@@ -33,17 +34,6 @@
 
 
     <Button
-        android:id="@+id/Open_Assignment_Button"
-        android:layout_width="277dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/open_assignment"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Announcement_Notice_TextView"/>
-
-    <Button
         android:id="@+id/View_Assignment_Button"
         android:layout_width="277dp"
         android:layout_height="88dp"
@@ -52,7 +42,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Open_Assignment_Button"
+        app:layout_constraintTop_toBottomOf="@id/Announcement_Notice_TextView"
         />
     <Button
         android:id="@+id/Open_Announcement_Button"

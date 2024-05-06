@@ -33,7 +33,7 @@
     <string name="enter_project_name">Enter Project Name</string>
     <string name="enter_shared_users">Enter Shared Users</string>
     <string name="enter_due_date">Enter Due Date</string>
-    <string name="enter_user_ids">Enter User Ids</string>
+    <string name="enter_user_ids">Enter Usernames</string>
     <string name="list_of_projects">List of Projects</string>
     <string name="enter_project_id">Enter Project Id</string>
     <string name="id">Id:</string>

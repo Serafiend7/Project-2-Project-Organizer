@@ -15,29 +15,16 @@ public class Announcement extends Item{
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String message;
-    private HashMap<Integer,Boolean> usersViewed;
-
 
 
     public Announcement() {
         super("",new ArrayList<>());
         message = "";
-        usersViewed = new HashMap<>();
     }
 
     public Announcement(String name, ArrayList<Integer> users, String message) {
         super(name, users);
         this.message = message;
-        usersViewed = new HashMap<>();
-        for (Integer user : users) {
-            usersViewed.put(user,Boolean.FALSE);
-        }
-    }
-
-    public Announcement(String name, ArrayList<Integer> users, String message, HashMap<Integer, Boolean> usersViewed) {
-        super(name, users);
-        this.message = message;
-        this.usersViewed = usersViewed;
     }
 
     public String getMessage() {
@@ -45,12 +32,6 @@ public class Announcement extends Item{
     }
     public void setMessage(String message) {
         this.message = message;
-    }
-    public HashMap<Integer, Boolean> getUsersViewed() {
-        return usersViewed;
-    }
-    public void setUsersViewed(HashMap<Integer, Boolean> usersViewed) {
-        this.usersViewed = usersViewed;
     }
 
     public int getId() {
@@ -61,27 +42,22 @@ public class Announcement extends Item{
         this.id = id;
     }
 
-    public int getViewCount() {
-        int views = 0;
-        for (Integer user : usersViewed.keySet()) {
-            if (Boolean.TRUE.equals(usersViewed.get(user))) {
-                views++;
-            }
-        }
-        return views;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Announcement that = (Announcement) o;
-        return Objects.equals(message, that.message) && Objects.equals(usersViewed, that.usersViewed);
+        return id == that.id && Objects.equals(message, that.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), message, usersViewed);
+        return Objects.hash(super.hashCode(), id, message);
+    }
+
+    @Override
+    public String toString() {
+        return "Announcement: " + getName() + "\n" + message + '\n';
     }
 }

@@ -20,9 +20,9 @@
         app:layout_constraintVertical_bias="0.061"/>
 
     <TextView
-        android:id="@+id/Assignment_Details_TextView"
+        android:id="@+id/List_Of_Assignments"
         android:layout_width="250dp"
-        android:layout_height="400dp"
+        android:layout_height="500dp"
         android:layout_marginTop="28dp"
         android:textSize="16sp"
         android:gravity="start"
@@ -33,16 +33,6 @@
         app:layout_constraintTop_toBottomOf="@id/Assignment_Name_Page_TextView"
         app:layout_constraintVertical_bias="0.061"/>
 
-    <Button
-        android:id="@+id/Assignment_Complete_Button"
-        android:layout_width="277dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/assignment_complete"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Assignment_Details_TextView"/>
 
     <Button
         android:id="@+id/Previous_Page_Button"
