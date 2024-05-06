@@ -13,12 +13,15 @@ import java.util.List;
 @Dao
 public interface ProjectDAO {
 
+    @Query("SELECT * from " + ProjectDatabase.PROJECT_TABLE + " WHERE name == :projectName")
+    Project getProjectByProjectName(String projectName);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Project p);
 
     @Query("Select * from " + ProjectDatabase.PROJECT_TABLE)
     List<Project> getAllRecords();
 
-//    @Query("SELECT * from " + UserIDDatabase.USER_ID_TABLE + " WHERE id == :id")
-//    Project getProjectByProjectID(Integer id);
+    @Query("SELECT * from " + ProjectDatabase.PROJECT_TABLE + " WHERE id == :id")
+    Project getProjectByProjectID(Integer id);
 }
