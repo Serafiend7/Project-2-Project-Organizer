@@ -1,17 +1,33 @@
-package com.example.project2.Project_Items;
+package com.example.project2.database.entities.Project_Items;
 
-import com.example.project2.database.entities.UserID;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.project2.database.AssignmentDatabase;
+import com.example.project2.database.typeConverters.AssignmentTypeConverters;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Objects;
 
+@TypeConverters(AssignmentTypeConverters.class)
+@Entity(tableName = AssignmentDatabase.ASSIGNMENT_TABLE)
 public class Assignment extends Item {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
 
     private String assignmentDetails;
     private HashMap<Integer,Boolean> completedUsers;
     private LocalDateTime dueDate;
+
+    public Assignment() {
+        super("", new ArrayList<>());
+        assignmentDetails = "";
+        completedUsers = new HashMap<>();
+        dueDate = LocalDateTime.parse("0000-00-00T00:00");
+    }
 
     public Assignment(String name, ArrayList<Integer> users, String assignmentDetails, LocalDateTime dueDate) {
         super(name, users);
@@ -47,6 +63,12 @@ public class Assignment extends Item {
     }
     public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
     public int totalCompleted() {
         int total = 0;

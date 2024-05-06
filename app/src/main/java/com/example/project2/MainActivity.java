@@ -12,6 +12,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "DAC_USERID";
     public static final String PROJECT_TAG = "DAC_PROJECT";
+    public static final String ASSIGNMENT_TAG = "DAC_ASSIGNMENT";
+    public static final String ANNOUNCEMENT_TAG = "DAC_ANNOUNCEMENT";
+
     ActivityMainBinding binding;
 
     @Override
@@ -20,18 +23,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.LoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
+        binding.LoginButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
 
-        binding.CreateAccountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CreateAccountPage.class));
-            }
-        });
+        binding.CreateAccountButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CreateAccountPage.class)));
     }
 }

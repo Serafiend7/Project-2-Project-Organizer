@@ -10,30 +10,29 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.project2.database.entities.Project;
 import com.example.project2.MainActivity;
-import com.example.project2.database.typeConverters.ProjectTypeConverters;
+import com.example.project2.database.entities.Project_Items.Announcement;
+import com.example.project2.database.typeConverters.AnnouncementTypeConverters;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@TypeConverters(ProjectTypeConverters.class)
-@Database(entities = {Project.class}, version = 1, exportSchema = false)
-public abstract class ProjectDatabase extends RoomDatabase {
-
-    private static final String DATA_BASE_NAME = "Project_database";
-    public static final String PROJECT_TABLE = "projectTable";
-    private static volatile ProjectDatabase INSTANCE;
+@TypeConverters(AnnouncementTypeConverters.class)
+@Database(entities = {Announcement.class}, version = 1, exportSchema = false)
+public abstract class AnnouncementDatabase extends RoomDatabase {
+    private static final String DATA_BASE_NAME = "Announcement_database";
+    public static final String ANNOUNCEMENT_TABLE = "announcementTable";
+    private static volatile AnnouncementDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static ProjectDatabase getDatabase(final Context context) {
+    static AnnouncementDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
-            synchronized (ProjectDatabase.class) {
+            synchronized (AnnouncementDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
-                            context.getApplicationContext(),
-                            ProjectDatabase.class,
+                                    context.getApplicationContext(),
+                                    AnnouncementDatabase.class,
                                     DATA_BASE_NAME
                             )
                             .fallbackToDestructiveMigration()
@@ -51,9 +50,9 @@ public abstract class ProjectDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            Log.i(MainActivity.PROJECT_TAG, "PROJECT DATABASE CREATED!");
+            Log.i(MainActivity.ANNOUNCEMENT_TAG, "ANNOUNCEMENT DATABASE CREATED!");
         }
     };
 
-    public abstract ProjectDAO projectDAO();
+    public abstract AnnouncementDAO AnnouncementDAO();
 }

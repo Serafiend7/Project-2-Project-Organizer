@@ -28,23 +28,18 @@ public class UserListPage extends AppCompatActivity {
         binding.ListOfUsers.setText(listUsers());
         binding.ListOfUsers.setMovementMethod(new ScrollingMovementMethod());
 
-        binding.PreviousPageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserListPage.this, AdminLandingPage.class));
-            }
-        });
+        binding.PreviousPageButton.setOnClickListener(v -> startActivity(new Intent(UserListPage.this, AdminLandingPage.class)));
     }
 
     private String listUsers(){
         ArrayList<UserID> listOfUsers = repository.getAllIDs();
         //listOfUsers.forEach(x -> x.toString());
-        String string = "";
+        StringBuilder string = new StringBuilder();
 
         for (UserID user : listOfUsers){
-            string += user.toString() + "\n\n";
+            string.append(user.toString()).append("\n\n");
         }
 
-        return string;
+        return string.toString();
     }
 }
