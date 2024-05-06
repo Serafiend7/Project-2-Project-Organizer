@@ -43,6 +43,7 @@ public class CreateProjectPage extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         repository = ProjectRepository.getRepository(getApplication());
+        userRepository = UserIDRepository.getRepository(getApplication());
 
         binding.PreviousPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,12 +68,14 @@ public class CreateProjectPage extends AppCompatActivity {
         UserID user = userRepository.getUserByUserID(creatorID);
         String creatorName = user.getUsername();
 
-        ArrayList<String> sharedUserNames = new ArrayList<>();
+        ArrayList<Integer> sharedUserIDs = new ArrayList<>();
 
         String users = binding.EnterSharedUsersEditTextNumberSigned.getText().toString();
-        String[] ids = users.split(",");
-        sharedUserNames.addAll(Arrays.asList(ids));
+        String[] names = users.split(",");
 
+        for (String s : names) {
+            sharedUserIDs.add(userRepository.getUserByUserName(s).getId());
+        }
 
         String date = binding.EnterDueDateEditTextNumberSigned.getText().toString();
         String[] v = date.split("/");
@@ -87,7 +90,7 @@ public class CreateProjectPage extends AppCompatActivity {
         date += v[1] + " 00:00";
         LocalDateTime dueDate = LocalDateTime.parse(date,formatter);
 
-        Project project = new Project(name,creatorName,sharedUserNames,dueDate);
+        Project project = new Project(name,creatorName,sharedUserIDs,dueDate);
 
         repository.insertProject(project);
         projectID = repository.getProjectByProjectName(project.getName()).getId();

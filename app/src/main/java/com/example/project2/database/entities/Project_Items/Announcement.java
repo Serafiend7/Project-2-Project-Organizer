@@ -1,27 +1,41 @@
-package com.example.project2.Project_Items;
+package com.example.project2.database.entities.Project_Items;
 
-import com.example.project2.database.entities.UserID;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.example.project2.database.AnnouncementDatabase;
 
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Objects;
 
+@Entity(tableName = AnnouncementDatabase.ANNOUNCEMENT_TABLE)
 public class Announcement extends Item{
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String message;
-    private HashMap<String,Boolean> usersViewed;
+    private HashMap<Integer,Boolean> usersViewed;
 
-    public Announcement(String name, ArrayList<String> users, String message) {
+
+
+    public Announcement() {
+        super("",new ArrayList<>());
+        message = "";
+        usersViewed = new HashMap<>();
+    }
+
+    public Announcement(String name, ArrayList<Integer> users, String message) {
         super(name, users);
         this.message = message;
         usersViewed = new HashMap<>();
-        for (String user : users) {
+        for (Integer user : users) {
             usersViewed.put(user,Boolean.FALSE);
         }
     }
 
-    public Announcement(String name, ArrayList<String> userIDlist, String message, HashMap<String, Boolean> usersViewed) {
-        super(name, userIDlist);
+    public Announcement(String name, ArrayList<Integer> users, String message, HashMap<Integer, Boolean> usersViewed) {
+        super(name, users);
         this.message = message;
         this.usersViewed = usersViewed;
     }
@@ -32,15 +46,24 @@ public class Announcement extends Item{
     public void setMessage(String message) {
         this.message = message;
     }
-    public HashMap<String, Boolean> getUsersViewed() {
+    public HashMap<Integer, Boolean> getUsersViewed() {
         return usersViewed;
     }
-    public void setUsersViewed(HashMap<String, Boolean> usersViewed) {
+    public void setUsersViewed(HashMap<Integer, Boolean> usersViewed) {
         this.usersViewed = usersViewed;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getViewCount() {
         int views = 0;
-        for (String user : usersViewed.keySet()) {
+        for (Integer user : usersViewed.keySet()) {
             if (Boolean.TRUE.equals(usersViewed.get(user))) {
                 views++;
             }

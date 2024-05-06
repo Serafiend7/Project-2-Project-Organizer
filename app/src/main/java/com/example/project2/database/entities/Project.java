@@ -1,18 +1,13 @@
 package com.example.project2.database.entities;
 
 
-import androidx.room.Delete;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.project2.database.ProjectDatabase;
-import com.example.project2.Project_Items.Announcement;
-import com.example.project2.Project_Items.Assignment;
-import com.example.project2.Project_Items.Item;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity(tableName = ProjectDatabase.PROJECT_TABLE)
@@ -22,31 +17,31 @@ public class Project {
 
     private String name;
     private String creatorName;
-    private ArrayList<String> sharedUserNames;
-    private ArrayList<Assignment> assignments;
+    private ArrayList<Integer> sharedUserIDs;
+    private ArrayList<Integer> assignments;
 
-    private ArrayList<Announcement> announcements;
+    private ArrayList<Integer> announcements;
     private LocalDateTime dueDate;
 
     @Deprecated
     public Project(){};
 
-    public Project(String name,String creatorName, ArrayList<String> sharedUserNames, ArrayList<Assignment> assignments, ArrayList<Announcement> announcements, LocalDateTime dueDate) {
+    public Project(String name,String creatorName, ArrayList<Integer> sharedUserIDs, ArrayList<Integer> assignments, ArrayList<Integer> announcements, LocalDateTime dueDate) {
         this.name = name;
         this.creatorName = creatorName;
-        this.sharedUserNames = sharedUserNames;
+        this.sharedUserIDs = sharedUserIDs;
         this.assignments = assignments;
         this.announcements = announcements;
         this.dueDate = dueDate;
     }
 
-    public Project(String name,String creatorName, ArrayList<String> sharedUserNames, LocalDateTime dueDate) {
+    public Project(String name,String creatorName, ArrayList<Integer> sharedUserIDs, LocalDateTime dueDate) {
         this.name = name;
         this.creatorName = creatorName;
-        this.sharedUserNames = sharedUserNames;
+        this.sharedUserIDs = sharedUserIDs;
         this.dueDate = dueDate;
-        assignments = new ArrayList<>();
-        announcements = new ArrayList<>();
+        assignments = new ArrayList<Integer>();
+        announcements = new ArrayList<Integer>();
     }
 
     public String getName() {
@@ -61,22 +56,22 @@ public class Project {
     public void setCreatorName(String creatorName) {
         this.creatorName = creatorName;
     }
-    public ArrayList<String> getSharedUserNames() {
-        return sharedUserNames;
+    public ArrayList<Integer> getSharedUserIDs() {
+        return sharedUserIDs;
     }
-    public void setSharedUserNames(ArrayList<String> sharedUserNames) {
-        this.sharedUserNames = sharedUserNames;
+    public void setSharedUserIDs(ArrayList<Integer> sharedUserIDs) {
+        this.sharedUserIDs = sharedUserIDs;
     }
-    public ArrayList<Assignment> getAssignments() {
+    public ArrayList<Integer> getAssignments() {
         return assignments;
     }
-    public void setAssignments(ArrayList<Assignment> assignments) {
+    public void setAssignments(ArrayList<Integer> assignments) {
         this.assignments = assignments;
     }
-    public ArrayList<Announcement> getAnnouncements() {
+    public ArrayList<Integer> getAnnouncements() {
         return announcements;
     }
-    public void setAnnouncements(ArrayList<Announcement> announcements) {
+    public void setAnnouncements(ArrayList<Integer> announcements) {
         this.announcements = announcements;
     }
 
@@ -95,16 +90,16 @@ public class Project {
         this.id = id;
     }
 
-    public void addAssignment(Assignment a) {
+    public void addAssignment(Integer a) {
         assignments.add(a);
     }
-    public void deleteAssignment(Assignment a) {
+    public void deleteAssignment(Integer a) {
         assignments.remove(a);
     }
-    public void addAnnouncement(Announcement a) {
+    public void addAnnouncement(Integer a) {
         announcements.add(a);
     }
-    public void deleteAnnouncement(Announcement a) {
+    public void deleteAnnouncement(Integer a) {
         announcements.remove(a);
     }
 
@@ -113,31 +108,31 @@ public class Project {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Project project = (Project) o;
-        return id == project.id && creatorName == project.creatorName && Objects.equals(name, project.name) && Objects.equals(sharedUserNames, project.sharedUserNames) && Objects.equals(assignments, project.assignments) && Objects.equals(announcements, project.announcements) && Objects.equals(dueDate, project.dueDate);
+        return id == project.id && Objects.equals(name, project.name) && Objects.equals(creatorName, project.creatorName) && Objects.equals(sharedUserIDs, project.sharedUserIDs) && Objects.equals(assignments, project.assignments) && Objects.equals(announcements, project.announcements) && Objects.equals(dueDate, project.dueDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, creatorName, sharedUserNames, assignments, announcements, dueDate);
+        return Objects.hash(id, name, creatorName, sharedUserIDs, assignments, announcements, dueDate);
     }
 
-    @Override
-    public String toString() {
-        String returnString = "";
-        returnString += "Project ID: " + this.id + "\n Project Name: " + this.name +
-                "\n Shared Users: \n" ;
-        for (String name : sharedUserNames) {
-            returnString += name + "\n";
-        }
-        returnString += "Assignments: \n";
-        for (Assignment assignments : assignments){
-            returnString += assignments.getName() + "\n";
-        }
-        returnString += "Announcements: \n";
-        for (Announcement announcements : announcements) {
-            returnString += announcements.getName() + "\n";
-        }
-        returnString += "Due Date: " + dueDate.toString();
-        return returnString;
-    }
+//    @Override
+//    public String toString() {
+//        String returnString = "";
+//        returnString += "Project ID: " + this.id + "\n Project Name: " + this.name +
+//                "\n Shared Users: \n" ;
+//        for (String name : sharedUserNames) {
+//            returnString += name + "\n";
+//        }
+//        returnString += "Assignments: \n";
+//        for (String assignments : assignments){
+//            returnString += assignments + "\n";
+//        }
+//        returnString += "Announcements: \n";
+//        for (String announcements : announcements) {
+//            returnString += announcements + "\n";
+//        }
+//        returnString += "Due Date: " + dueDate.toString();
+//        return returnString;
+//    }
 }

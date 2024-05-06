@@ -7,33 +7,30 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.project2.database.entities.Project;
 import com.example.project2.MainActivity;
-import com.example.project2.database.typeConverters.ProjectTypeConverters;
+import com.example.project2.database.entities.Project_Items.Assignment;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@TypeConverters(ProjectTypeConverters.class)
-@Database(entities = {Project.class}, version = 1, exportSchema = false)
-public abstract class ProjectDatabase extends RoomDatabase {
+@Database(entities = {Assignment.class}, version = 1, exportSchema = false)
 
-    private static final String DATA_BASE_NAME = "Project_database";
-    public static final String PROJECT_TABLE = "projectTable";
-    private static volatile ProjectDatabase INSTANCE;
+public abstract class AssignmentDatabase extends RoomDatabase {
+    private static final String DATA_BASE_NAME = "Assignment_database";
+    public static final String ASSIGNMENT_TABLE = "assignmentTable";
+    private static volatile AssignmentDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static ProjectDatabase getDatabase(final Context context) {
+    static AssignmentDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
-            synchronized (ProjectDatabase.class) {
+            synchronized (AssignmentDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
-                            context.getApplicationContext(),
-                            ProjectDatabase.class,
+                                    context.getApplicationContext(),
+                                    AssignmentDatabase.class,
                                     DATA_BASE_NAME
                             )
                             .fallbackToDestructiveMigration()
@@ -51,9 +48,9 @@ public abstract class ProjectDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            Log.i(MainActivity.PROJECT_TAG, "PROJECT DATABASE CREATED!");
+            Log.i(MainActivity.ASSIGNMENT_TAG, "ASSIGNMENT DATABASE CREATED!");
         }
     };
 
-    public abstract ProjectDAO projectDAO();
+    public abstract AssignmentDAO AssignmentDAO();
 }

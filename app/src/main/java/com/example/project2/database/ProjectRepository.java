@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.example.project2.database.entities.Project;
 import com.example.project2.MainActivity;
-import com.example.project2.database.entities.UserID;
 
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
@@ -80,7 +79,7 @@ public class ProjectRepository {
     }
 
     public Project getProjectByProjectName(String name) {
-        Future<Project> future = UserIDDatabase.databaseWriteExecutor.submit(
+        Future<Project> future = ProjectDatabase.databaseWriteExecutor.submit(
                 new Callable<Project>() {
                     @Override
                     public Project call() throws Exception {

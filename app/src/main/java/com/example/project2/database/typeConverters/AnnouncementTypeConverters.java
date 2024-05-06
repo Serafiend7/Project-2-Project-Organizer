@@ -1,11 +1,6 @@
 package com.example.project2.database.typeConverters;
 
-import static java.lang.Long.parseLong;
-
 import androidx.room.TypeConverter;
-
-import com.example.project2.database.entities.Project_Items.Announcement;
-import com.example.project2.database.entities.Project_Items.Assignment;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -15,7 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class ProjectTypeConverters {
+public class AnnouncementTypeConverters {
+
     @TypeConverter
     public long convertDateToLong(LocalDateTime date){
         ZonedDateTime zdt = ZonedDateTime.of(date, ZoneId.systemDefault());
@@ -44,6 +40,27 @@ public class ProjectTypeConverters {
             r.add(Integer.valueOf(v[i]));
         }
         return r;
+    }
+    @TypeConverter
+    public String convertUserHashMapToString(HashMap<Integer,Boolean> users) {
+        StringBuilder s = new StringBuilder();
+        for (Integer user : users.keySet()) {
+            s.append(user).append("`").append(users.get(user));
+        }
+        return s.toString();
+    }
+
+    @TypeConverter
+    public HashMap<Integer,Boolean> convertStringToUserHashMap (String s) {
+        HashMap<Integer,Boolean> userHashmap = new HashMap<>();
+        String[] v = s.split("`");
+        for (int i = 0; i < v.length; i+= 2) {
+            Integer id = Integer.valueOf(v[i]);
+            boolean completion;
+            completion = Objects.equals(v[i+1], "true");
+            userHashmap.put(id,completion);
+        }
+        return userHashmap;
     }
 
 }

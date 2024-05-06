@@ -12,6 +12,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "DAC_USERID";
     public static final String PROJECT_TAG = "DAC_PROJECT";
+    public static final String ASSIGNMENT_TAG = "DAC_ASSIGNMENT";
+    public static final String ANNOUNCEMENT_TAG = "DAC_ANNOUNCEMENT";
+
     ActivityMainBinding binding;
 
     @Override
