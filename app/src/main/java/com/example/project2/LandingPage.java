@@ -49,7 +49,7 @@ public class LandingPage extends AppCompatActivity {
 
         String name = user.getUsername();
 
-        binding.LandingPageTextView.setText(String.format(Locale.ENGLISH, "Welcome %s",name));
+        binding.LandingPageTextView.setText(String.format(Locale.ENGLISH, "Welcome %s!",name));
 
         binding.LogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override

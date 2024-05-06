@@ -23,18 +23,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.LoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
+        binding.LoginButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
 
-        binding.CreateAccountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CreateAccountPage.class));
-            }
-        });
+        binding.CreateAccountButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CreateAccountPage.class)));
     }
 }

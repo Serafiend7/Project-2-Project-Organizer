@@ -1,51 +1,64 @@
 package com.example.project2;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project2.database.UserIDRepository;
+import com.example.project2.database.entities.UserID;
 import com.example.project2.databinding.AdminLandingPageBinding;
+
+import java.util.Locale;
 
 public class AdminLandingPage extends AppCompatActivity {
 
     AdminLandingPageBinding binding;
+
+    private int loginUserID = -1;
+    private UserIDRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = AdminLandingPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        //todo: binding.LandingPageTextView.setText("Welcome " + username + "!");
 
-        binding.LogoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AdminLandingPage.this, MainActivity.class));
-            }
-        });
+        repository = UserIDRepository.getRepository(getApplication());
+        setLoginUserID(savedInstanceState);
 
-        binding.ListUsersButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AdminLandingPage.this, UserListPage.class));
-            }
-        });
+        UserID user = repository.getUserByUserID(loginUserID);
 
-        binding.AddUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AdminLandingPage.this, AddUserPage.class));
-            }
-        });
+        binding.LandingPageTextView.setText(String.format(Locale.ENGLISH,"Welcome %s!",user.getUsername()));
 
-        binding.DeleteUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AdminLandingPage.this, DeleteUserPage.class));
-            }
-        });
+        binding.LogoutButton.setOnClickListener(v -> startActivity(new Intent(AdminLandingPage.this, MainActivity.class)));
+
+        binding.ListUsersButton.setOnClickListener(v -> startActivity(new Intent(AdminLandingPage.this, UserListPage.class)));
+
+        binding.AddUserButton.setOnClickListener(v -> startActivity(new Intent(AdminLandingPage.this, AddUserPage.class)));
+
+        binding.DeleteUserButton.setOnClickListener(v -> startActivity(new Intent(AdminLandingPage.this, DeleteUserPage.class)));
+    }
+
+    private void setLoginUserID(Bundle savedInstanceState) {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences(LandingPage.SHARED_PREFERENCE_USERID_KEY, Context.MODE_PRIVATE);
+
+        if (preferences.contains(LandingPage.SHARED_PREFERENCE_USERID_KEY)) {
+            loginUserID = preferences.getInt(LandingPage.SHARED_PREFERENCE_USERID_KEY,-1);
+        }
+        if (loginUserID == -1 & savedInstanceState != null && savedInstanceState.containsKey(LandingPage.SHARED_PREFERENCE_USERID_KEY)) {
+            loginUserID = savedInstanceState.getInt(LandingPage.SHARED_PREFERENCE_USERID_KEY,-1);
+        }
+        if (loginUserID == -1) {
+            loginUserID = getIntent().getIntExtra(LandingPage.LANDING_PAGE_USER_ID,-1);
+        }
+        if (loginUserID == -1) {
+            return;
+        }
+
     }
 }

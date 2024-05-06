@@ -42,9 +42,6 @@ public class CreateProjectPage extends AppCompatActivity {
         binding = CreateProjectPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        repository = ProjectRepository.getRepository(getApplication());
-        userRepository = UserIDRepository.getRepository(getApplication());
-
         binding.PreviousPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +51,8 @@ public class CreateProjectPage extends AppCompatActivity {
 
         binding.CreateProjectButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                repository = ProjectRepository.getRepository(getApplication());
+                userRepository = UserIDRepository.getRepository(getApplication());
                 getCreatorID(savedInstanceState);
                 createProject();
                 toastTextId(projectID);

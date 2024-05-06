@@ -6,17 +6,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-import android.preference.PreferenceManager;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project2.database.entities.UserID;
 import com.example.project2.database.UserIDRepository;
 import com.example.project2.databinding.LoginPageBinding;
-
-import java.util.Map;
-import java.util.Set;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,26 +27,23 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         repository = UserIDRepository.getRepository(getApplication());
-        binding.LoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = binding.EnterUsernameEditTextNumberSigned.getText().toString();
-                String password= binding.EnterPasswordEditTextNumberSigned.getText().toString();
+        binding.LoginButton.setOnClickListener(v -> {
+            String username = binding.EnterUsernameEditTextNumberSigned.getText().toString();
+            String password= binding.EnterPasswordEditTextNumberSigned.getText().toString();
 
-                if (!checkUserID(username, password)) {
-                    Toast.makeText(LoginActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    UserID user = repository.getUserByUserName(username);
-                    SharedPreferences preferences = getApplicationContext().getSharedPreferences(LandingPage.SHARED_PREFERENCE_USERID_KEY,Context.MODE_PRIVATE);
-                    SharedPreferences.Editor preferencesEditor = preferences.edit();
-                    preferencesEditor.putInt(LandingPage.SHARED_PREFERENCE_USERID_KEY, user.getId());
-                    preferencesEditor.apply();
+            if (!checkUserID(username, password)) {
+                Toast.makeText(LoginActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                UserID user = repository.getUserByUserName(username);
+                SharedPreferences preferences = getApplicationContext().getSharedPreferences(LandingPage.SHARED_PREFERENCE_USERID_KEY,Context.MODE_PRIVATE);
+                SharedPreferences.Editor preferencesEditor = preferences.edit();
+                preferencesEditor.putInt(LandingPage.SHARED_PREFERENCE_USERID_KEY, user.getId());
+                preferencesEditor.apply();
 
-                    startActivity(LandingPage.landingPageActivityIntentFactory(getApplicationContext(),user.getId()));
-                    if (checkAdminStatus(username)){
-                        startActivity(new Intent(LoginActivity.this, AdminLandingPage.class));
-                    }
+                startActivity(LandingPage.landingPageActivityIntentFactory(getApplicationContext(),user.getId()));
+                if (checkAdminStatus(username)){
+                    startActivity(new Intent(LoginActivity.this, AdminLandingPage.class));
                 }
             }
         });
